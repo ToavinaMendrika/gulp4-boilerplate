@@ -1,6 +1,8 @@
 body {
   background: #404;
   color: #474747;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  -webkit-transition: .3s;
+  transition: .3s; }
 
 /*# sourceMappingURL=style.css.map */
