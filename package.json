@@ -1,0 +1,23 @@
+{
+  "name": "gulp4-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "Author": " Mendrika Toavina <mendri.katoavina.andriantsivolosy@esti.mg>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "boilerplate",
+    "Javascript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5"
+  }
+}
