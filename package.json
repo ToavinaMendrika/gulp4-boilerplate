@@ -2,10 +2,11 @@
   "name": "gulp4-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "Author": " Mendrika Toavina <mendri.katoavina.andriantsivolosy@esti.mg>",
+  "Author": " Mendrika Toavina <mendrika.toavina.andriantsivolosy@esti.mg>",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx gulp build",
+    "watch": "npx gulp watch"
   },
   "keywords": [
     "gulp",
