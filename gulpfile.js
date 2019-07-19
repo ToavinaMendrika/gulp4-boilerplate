@@ -4,6 +4,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const del = require('del')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
+const concat = require('gulp-concat')
 
 var postcssPlugins = [
     autoprefixer('last 2 version', 'safari 5', 'ie 7', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4')
@@ -14,20 +15,30 @@ function clean(){
 }
 
 function scss(){
-    return src('./src/scss/**/*.scss',{ sourcemaps: true })
-        .pipe(gulpSass())
+    return src('./src/scss/**/*.scss')
+        .pipe(gulpSass().on('error', gulpSass.logError))
         .pipe(postcss(postcssPlugins))
+        .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('.'))
-        .pipe(dest('./dist/css'),{ sourcemaps: '.' })
+        .pipe(dest('./dist/css'))
 }
 
 function watcher(){
-    watch('./src/scss/**/*.scss',series(clean,scss))
+    watch(['./src/scss/**/*.scss','./src/js/**/*.js'],series(clean,parallel(scss,javascript)))
 }
+
+function javascript(){
+    return src('./src/js/*.js')
+        .pipe(concat('bundle.js'))
+        .pipe(sourcemaps.init())
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest('./dist/js'))
+}
+
 
 
 module.exports = {
     clean,
-    default: series(clean,scss),
+    default: series(clean,parallel(scss,javascript)),
     watch: watcher
 }
